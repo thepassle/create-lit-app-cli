@@ -22,7 +22,7 @@ module.exports = {
               var projectPath = path.resolve(process.cwd());
               console.log(`Creating a new Lit app in ${chalk.green(projectPath+"/"+projectname)}.\n\nInstalling packages...\nThis might take a couple of minutes.`);
 
-              var npm = spawn('npm', ['install'], { cwd: projectPath+'/'+projectname });      
+              var npm = spawn(/^win/.test(process.platform) ? 'npm.cmd' : 'npm', ['install'], { cwd: projectPath+'/'+projectname });      
 
               npm.stdout.on('data', function (data) {
                 console.log('' + data);
